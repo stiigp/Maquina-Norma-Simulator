@@ -4,12 +4,56 @@
 void somaSimples(Registrador &A, Registrador &B) {
     // essa funcao soma o conteudo de B em A
     // ao final da execucao, o valor em B sera 0
+    // e a funcao considera o sinal do numero, ao contrario das outras
     // para uma soma que mantem o valor dos registradores, veja funcao abaixo
 
-    while (!teste(B)) { // teste retorna 1 caso o valor de B seja 0
-        sub(B);
-        add(A);
+        
+    if (A.sinal) {
+        // a eh negativo
+        if (B.sinal) {
+            // ambos negativos -> simplesmente faz a soma
+            while (!teste(B)) {
+                sub(B);
+                add(A);
+            }
+        } else {
+            // a eh negativo mas b eh positivo
+            while (!teste(B)) {
+                if (A.sinal) {
+                    sub(B);
+                    sub(A);
+                } else {
+                    sub(B);
+                    add(A);
+                }
+                if (teste(A))
+                    A.sinal = 0;
+            }
+        }
+    } else {
+        // a eh positivo
+        if (!B.sinal) {
+            // ambos positivos, simplesmente faz a soma
+            while (!teste(B)) {
+                sub(B);
+                add(A);
+            }
+        } else {
+            // a positivo e B negativo
+            while (!teste(B)) {
+                if (A.sinal) {
+                    sub(B);
+                    add(A);
+                } else {
+                    sub(B);
+                    sub(A);
+                }
+                if (teste(A))
+                    A.sinal = 1;
+            }
+        }
     }
+    B.sinal = 0;
 }
 
 void somaMantendoValores(Registrador &A, Registrador &B) {
@@ -85,16 +129,18 @@ int main() {
 
     for (int i = 0; i < 5; i ++)
         add(A);
+    A.sinal = 0;
     
     for (int i = 0; i < 10; i ++)
         add(B);
+    B.sinal = 0;
 
-
-    printf("Reg A: %d\nReg B: %d\n", A.valor, B.valor);
-    // somaSimples(A, B);
+    
+    somaSimples(A, B);
     // somaMantendoValores(A, B);
     // multiplica(A, B);
-    aRecebeB(A, B);
 
-    printf("Reg A: %d\nReg B: %d\n", A.valor, B.valor);
+    printf("A: "); exibeResultadoRegistrador(A);
+    printf("B: "); exibeResultadoRegistrador(B);
+    
 }

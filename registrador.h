@@ -1,5 +1,6 @@
 struct Registrador {
     int valor = 0;
+    int sinal = 0;
 };
 
 void add(Registrador &reg) {
@@ -12,4 +13,11 @@ void sub(Registrador &reg) {
 
 int teste(Registrador &reg) {
     return (reg.valor == 0);
+}
+
+void exibeResultadoRegistrador(Registrador &reg) {
+    if (reg.sinal)
+        printf("Valor: -%d\n", reg.valor);
+    else
+        printf("Valor: %d\n", reg.valor);
 }
