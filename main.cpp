@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <ctype.h>
+#include <conio.h>
 #include "registrador.h"
 
 void somaSimples(Registrador &A, Registrador &B) {
@@ -13,12 +15,24 @@ void somaSimples(Registrador &A, Registrador &B) {
         if (B.sinal) {
             // ambos negativos -> simplesmente faz a soma
             while (!teste(B)) {
+                gotoxy(25, 50);
+                printf("A: ");
+                exibeResultadoRegistrador(A);
+                printf("B: ");
+                exibeResultadoRegistrador(B);
+                sleep(1);
                 sub(B);
                 add(A);
             }
         } else {
             // a eh negativo mas b eh positivo
             while (!teste(B)) {
+                gotoxy(25, 50);
+                printf("A: ");
+                exibeResultadoRegistrador(A);
+                printf("B: ");
+                exibeResultadoRegistrador(B);
+                sleep(1);
                 if (A.sinal) {
                     sub(B);
                     sub(A);
@@ -35,12 +49,24 @@ void somaSimples(Registrador &A, Registrador &B) {
         if (!B.sinal) {
             // ambos positivos, simplesmente faz a soma
             while (!teste(B)) {
+                gotoxy(25, 50);
+                printf("A: ");
+                exibeResultadoRegistrador(A);
+                printf("B: ");
+                exibeResultadoRegistrador(B);
+                sleep(1);
                 sub(B);
                 add(A);
             }
         } else {
             // a positivo e B negativo
             while (!teste(B)) {
+                gotoxy(25, 50);
+                printf("A: ");
+                exibeResultadoRegistrador(A);
+                printf("B: ");
+                exibeResultadoRegistrador(B);
+                sleep(1);
                 if (A.sinal) {
                     sub(B);
                     add(A);
@@ -53,7 +79,17 @@ void somaSimples(Registrador &A, Registrador &B) {
             }
         }
     }
+    if (teste(A)) {
+        A.sinal = 0;
+    }
+
     B.sinal = 0;
+    gotoxy(25, 50);
+    printf("A: ");
+    exibeResultadoRegistrador(A);
+    printf("B: ");
+    exibeResultadoRegistrador(B);
+    sleep(1);
 }
 
 void somaMantendoValores(Registrador &A, Registrador &B) {
@@ -62,13 +98,30 @@ void somaMantendoValores(Registrador &A, Registrador &B) {
     Registrador C;
 
     while (!teste(B)) {
+        gotoxy(25, 50);
+        printf("A: ");
+        exibeResultadoRegistrador(A);
+        printf("B: ");
+        exibeResultadoRegistrador(B);
+        printf("C: ");
+        exibeResultadoRegistrador(C);
+        sleep(1);
         sub(B);
         add(C);
     }
 
     while (!teste(C)) {
-        sub(C);
 
+        gotoxy(25, 50);
+        printf("A: ");
+        exibeResultadoRegistrador(A);
+        printf("B: ");
+        exibeResultadoRegistrador(B);
+        printf("C: ");
+        exibeResultadoRegistrador(C);
+        sleep(1);
+
+        sub(C);
         add(B);
         add(A);
     }
@@ -84,6 +137,16 @@ void multiplica(Registrador &A, Registrador &B) {
 
     
     while (!teste(A)) {
+        gotoxy(25, 50);
+        printf("A: ");
+        exibeResultadoRegistrador(A);
+        printf("B: ");
+        exibeResultadoRegistrador(B);
+        printf("C: ");
+        exibeResultadoRegistrador(C);
+        printf("D: ");
+        exibeResultadoRegistrador(D);
+        sleep(1);
         sub(A);
         add(C);
     }
@@ -91,12 +154,32 @@ void multiplica(Registrador &A, Registrador &B) {
     while (!teste(C)) {
 
         while (!teste(B)) {
+            gotoxy(25, 50);
+            printf("A: ");
+            exibeResultadoRegistrador(A);
+            printf("B: ");
+            exibeResultadoRegistrador(B);
+            printf("C: ");
+            exibeResultadoRegistrador(C);
+            printf("D: ");
+            exibeResultadoRegistrador(D);
+            sleep(1);
             sub(B);
             add(D);
             add(A);
         }
 
         while (!teste(D)) {
+            gotoxy(25, 50);
+            printf("A: ");
+            exibeResultadoRegistrador(A);
+            printf("B: ");
+            exibeResultadoRegistrador(B);
+            printf("C: ");
+            exibeResultadoRegistrador(C);
+            printf("D: ");
+            exibeResultadoRegistrador(D);
+            sleep(1);
             sub(D);
             add(B);
         }
@@ -109,38 +192,113 @@ void aRecebeB(Registrador &A, Registrador &B) {
     Registrador C;
 
     while (!teste(A)) {
+        gotoxy(25, 50);
+        printf("A: ");
+        exibeResultadoRegistrador(A);
+        printf("B: ");
+        exibeResultadoRegistrador(B);
+        printf("C: ");
+        exibeResultadoRegistrador(C);
+        sleep(1);
         sub(A);
     }
 
     while (!teste(B)) {
+        gotoxy(25, 50);
+        printf("A: ");
+        exibeResultadoRegistrador(A);
+        printf("B: ");
+        exibeResultadoRegistrador(B);
+        printf("C: ");
+        exibeResultadoRegistrador(C);
+        sleep(1);
         sub(B);
         add(C);
     }
 
     while (!teste(C)) {
+        gotoxy(25, 50);
+        printf("A: ");
+        exibeResultadoRegistrador(A);
+        printf("B: ");
+        exibeResultadoRegistrador(B);
+        printf("C: ");
+        exibeResultadoRegistrador(C);
+        sleep(1);
         sub(C);
         add(B);
         add(A);
     }
 }
 
+void pegaValores(Registrador &A, Registrador &B) {
+    int aux;
+
+    printf("Digite o valor do registrador A: ");
+
+    scanf("%d", &aux);
+    if (aux < 0) {
+        A.valor = aux * -1;
+        A.sinal = 1;
+    } else {
+        A.valor = aux;
+        A.sinal = 0;
+    }
+
+    printf("Digite o valor do registrador B: ");
+
+    scanf("%d", &aux);
+    if (aux < 0) {
+        B.valor = aux * -1;
+        B.sinal = 1;
+    } else {
+        B.valor = aux;
+        B.sinal = 0;
+    }
+}
+
 int main() {
-    Registrador A, B, C;
+    Registrador A, B;
 
-    for (int i = 0; i < 5; i ++)
-        add(A);
-    A.sinal = 0;
-    
-    for (int i = 0; i < 10; i ++)
-        add(B);
-    B.sinal = 0;
+    char op;
 
-    
-    somaSimples(A, B);
-    // somaMantendoValores(A, B);
-    // multiplica(A, B);
+    do {
+        printf("Qual operacao deseja realizar?\n");
+        printf("[A]: Soma simples (considera numeros negativos)\n");
+        printf("[B]: Soma mantendo valor dos registradores\n");
+        printf("[C]: Multiplicacao\n");
+        printf("[D]: Atribuicao/Copia\n");
 
-    printf("A: "); exibeResultadoRegistrador(A);
-    printf("B: "); exibeResultadoRegistrador(B);
+        fflush(stdin);
+        op = getch();
+
+        if (op != 27) {
+            pegaValores(A, B);
+
+            switch (tolower(op)) {
+                case 'a':
+                    somaSimples(A, B);
+                    break;
+                case 'b':
+                    somaMantendoValores(A, B);
+                    break;
+                case 'c':
+                    multiplica(A, B);
+                    break;
+                case 'd':
+                    aRecebeB(A, B);
+                    break;
+            }
+
+            printf("A: "); exibeResultadoRegistrador(A);
+            printf("B: "); exibeResultadoRegistrador(B);
+            
+            printf("Aperte qualquer tecla para continuar");
+            getch();
+            getch();
+            clrscr();
+        }
+
+    } while (op != 27);
     
 }
