@@ -1,5 +1,5 @@
 - Um simples simulador de máquina Norma com 4 operações:
-    - Soma de A em B
+    - Soma de A em B (esta considerando o sinal dos registradores)
     - Soma de A em B mantendo o valor de B
     - Multiplicação de A por B mantendo o valor de B
     - A receber B mantendo o valor de B
