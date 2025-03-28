@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <ctype.h>
-#include <conio2.h>
 #include <conio.h>
 #include <windows.h>
 #include "registrador.h"
@@ -23,7 +22,8 @@ void somaSimples(Registrador &A, Registrador &B) {
                 
                 printf("B: ");
                 exibeResultadoRegistrador(B);
-                //Sleep(1);
+                Sleep(1000);
+                printf("\n");
                 sub(B);
                 add(A);
             }
@@ -35,7 +35,8 @@ void somaSimples(Registrador &A, Registrador &B) {
                 exibeResultadoRegistrador(A);
                 printf("B: ");
                 exibeResultadoRegistrador(B);
-                //Sleep(1);
+                Sleep(1000);
+                printf("\n");
                 if (A.sinal) {
                     sub(B);
                     sub(A);
@@ -57,7 +58,8 @@ void somaSimples(Registrador &A, Registrador &B) {
                 exibeResultadoRegistrador(A);
                 printf("B: ");
                 exibeResultadoRegistrador(B);
-                //Sleep(1);
+                Sleep(1000);
+                printf("\n");
                 sub(B);
                 add(A);
             }
@@ -69,7 +71,8 @@ void somaSimples(Registrador &A, Registrador &B) {
                 exibeResultadoRegistrador(A);
                 printf("B: ");
                 exibeResultadoRegistrador(B);
-                //Sleep(1);
+                Sleep(1000);
+                printf("\n");
                 if (A.sinal) {
                     sub(B);
                     add(A);
@@ -92,7 +95,8 @@ void somaSimples(Registrador &A, Registrador &B) {
     exibeResultadoRegistrador(A);
     printf("B: ");
     exibeResultadoRegistrador(B);
-    Sleep(1);
+    Sleep(1000);
+    printf("\n");
 }
 
 void somaMantendoValores(Registrador &A, Registrador &B) {
@@ -108,7 +112,8 @@ void somaMantendoValores(Registrador &A, Registrador &B) {
         exibeResultadoRegistrador(B);
         printf("C: ");
         exibeResultadoRegistrador(C);
-        Sleep(1);
+        Sleep(1000);
+        printf("\n");
         sub(B);
         add(C);
     }
@@ -122,7 +127,8 @@ void somaMantendoValores(Registrador &A, Registrador &B) {
         exibeResultadoRegistrador(B);
         printf("C: ");
         exibeResultadoRegistrador(C);
-        Sleep(1);
+        Sleep(1000);
+        printf("\n");
 
         sub(C);
         add(B);
@@ -149,7 +155,8 @@ void multiplica(Registrador &A, Registrador &B) {
         exibeResultadoRegistrador(C);
         printf("D: ");
         exibeResultadoRegistrador(D);
-        //Sleep(1);
+        Sleep(1000);
+        printf("\n");
         sub(A);
         add(C);
     }
@@ -166,7 +173,8 @@ void multiplica(Registrador &A, Registrador &B) {
             exibeResultadoRegistrador(C);
             printf("D: ");
             exibeResultadoRegistrador(D);
-            //Sleep(1);
+            Sleep(1000);
+            printf("\n");
             sub(B);
             add(D);
             add(A);
@@ -182,7 +190,8 @@ void multiplica(Registrador &A, Registrador &B) {
             exibeResultadoRegistrador(C);
             printf("D: ");
             exibeResultadoRegistrador(D);
-            //Sleep(1);
+            Sleep(1000);
+            printf("\n");
             sub(D);
             add(B);
         }
@@ -202,7 +211,8 @@ void aRecebeB(Registrador &A, Registrador &B) {
         exibeResultadoRegistrador(B);
         printf("C: ");
         exibeResultadoRegistrador(C);
-        Sleep(1);
+        Sleep(1000);
+        printf("\n");
         sub(A);
     }
 
@@ -214,7 +224,8 @@ void aRecebeB(Registrador &A, Registrador &B) {
         exibeResultadoRegistrador(B);
         printf("C: ");
         exibeResultadoRegistrador(C);
-        Sleep(1);
+        Sleep(1000);
+        printf("\n");
         sub(B);
         add(C);
     }
@@ -227,7 +238,8 @@ void aRecebeB(Registrador &A, Registrador &B) {
         exibeResultadoRegistrador(B);
         printf("C: ");
         exibeResultadoRegistrador(C);
-        Sleep(1);
+        Sleep(1000);
+        printf("\n");
         sub(C);
         add(B);
         add(A);
@@ -282,6 +294,7 @@ void resultado(Registrador &A, Registrador &B) {
     printf("\nB: ");
     exibeResultadoRegistrador(B);
     printf("\nPressione qualquer tecla para continuar...");
+    getch();
 }
 
 
@@ -300,21 +313,28 @@ int main() {
                 	pegaValores(A, B);
                     somaSimples(A, B);
                     resultado(A,B);
+                    system("cls");
+                    exibeMenu();
                     break;
                 case 'b':
                 	pegaValores(A, B);
                     somaMantendoValores(A, B);
                     resultado(A,B);
+                    system("cls");
+                    exibeMenu();
                     break;
                 case 'c':
                 	pegaValores(A, B);
                     multiplica(A, B);
                     resultado(A,B);
+                    system("cls");
+                    exibeMenu();
                     break;
                 case 'd':
                 	pegaValores(A, B);
                     aRecebeB(A, B);
                     resultado(A,B);
+                    system("cls");
                     exibeMenu();
                     break;
                 default:
